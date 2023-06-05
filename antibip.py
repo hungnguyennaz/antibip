@@ -45,8 +45,8 @@ def block_scanners_ips():
     for ip in scanners_ips:
         block_ip(ip)
 
-    print("Đã chặn thành công các địa chỉ IP từ danh sách.")
     print("")
+    print("Đã chặn thành công các địa chỉ IP từ danh sách.")
     print("Cảm ơn bạn vì đã sử dụng.")
     print("")
 
