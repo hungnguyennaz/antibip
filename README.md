@@ -14,6 +14,13 @@ Sau đó, chỉ cần khởi động script và sử dụng
 ```bash
   python3 (hoặc python) antibip.py
 ```
+Bạn có thể lưu vĩnh viễn các rules IPTables bằng cách sử dụng ``iptables-persistent``
+```bash
+  DEB based systems: sudo apt install iptables-persistent
+  
+  RPM based systems: sudo dnf install iptables-services
+```
+
 ## Tác giả
 - [@hungnguyennaz](https://github.com/hungnguyennaz) - Script này
 - [@SilvrrGIT](https://github.com/SilvrrGIT) - IP Lists
