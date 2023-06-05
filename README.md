@@ -1,16 +1,15 @@
 # antibip
 
-Script Python chặn IP của các hệ thống scanners như Censys, Shodan
-
+Censys và Shodan là công cụ tìm kiếm và quét mạng trực tuyến. Chúng giúp thu thập thông tin về các thiết bị kết nối với Internet. Tuy nhiên, khi được sử dụng bởi kẻ xấu, chúng có thể tìm lỗ hổng bảo mật và thông tin nhạy cảm để tấn công hoặc xâm nhập vào hệ thống. Vì vậy, script này được tạo ra để giúp mọi người có thể giảm thiểu khả năng bị quét bằng cách script sẽ tự động tải xuống một danh sách các địa chỉ IP đã được phát hiện là scanners của Censys/Shodan/... và chặn chúng.
 
 ## Cài đặt
 
-Để sử dụng, bạn cần phải cài module ``request`` và IPTables (bạn có thể tra Google để xem cách cài cho distro của bạn) để có thể lấy danh sách các địa chỉ IPs của scanners và chặn chúng bằng cách sử dụng lệnh
+Để sử dụng, bạn cần phải cài module ``request`` và IPTables (bạn có thể tra Google để xem cách cài cho distro của bạn) để có thể lấy danh sách các địa chỉ IPs của scanners và chặn chúng bằng cách sử dụng lệnh:
 
 ```bash
   pip (hoặc pip3) install requests
 ```
-Sau đó, chỉ cần khởi động script và sử dụng
+Sau đó, chỉ cần khởi động script và sử dụng:
 ```bash
   python3 (hoặc python) antibip.py
 ```
