@@ -18,7 +18,6 @@ def check_if_iptables_installed():
         return False
 
 
-<<<<<<< HEAD
 def create_ipset_blacklist():
     subprocess.run(
         ["sudo", "ipset", "create", "antibip-blacklist", "hash:ip", "hashsize", "8192"]
@@ -45,10 +44,9 @@ def block_ipset_blacklist():
             "DROP",
         ]
     )
-=======
+
 def block_ip(ip):
     subprocess.run(["sudo", "iptables", "-I", "INPUT", "-s", ip, "-j", "DROP"])
->>>>>>> 655e8e2982f3f3544b05ec20e9703e16169d1b7d
 
 
 def get_scanners_ips():
