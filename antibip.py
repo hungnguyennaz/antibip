@@ -11,7 +11,7 @@ def check_if_iptables_installed():
 
 
 def block_ip(ip):
-    subprocess.run(["sudo", "iptables", "-A", "INPUT", "-s", ip, "-j", "DROP"])
+    subprocess.run(["sudo", "iptables", "-I", "INPUT", "-s", ip, "-j", "DROP"])
 
 
 def get_scanners_ips():
