@@ -1,6 +1,7 @@
 import subprocess
 import requests
 
+GITHUB_RAW_URL = "https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt"
 
 def check_if_ipset_installed():
     try:
@@ -50,25 +51,25 @@ def block_ip(ip):
 
 
 def get_scanners_ips():
-    url = "https://raw.githubusercontent.com/SilvrrGIT/IP-Lists/master/"
-    files = ["binary_edge", "other", "shodan", "stretchoid"]
-    scanners_ips = set()
-
-    for file in files:
-        response = requests.get(url + file)
+    try:
+        response = requests.get(GITHUB_RAW_URL)
         if response.status_code == 200:
-            lines = response.text.split("\n")
-            for line in lines:
-                line = line.strip()
+            content = response.text.split("\n")
+            scanners_ips = set()
+            for line in content:
+                line = line.split('#', 1)[0].strip()
                 if line and not line.startswith("#"):
-                    scanners_ips.add(line)
-
-    return scanners_ips
+                    ip = line.split()[0]
+                    scanners_ips.add(ip)
+            return scanners_ips
+    except Exception as e:
+        print(f"Error fetching IP list: {e}")
+        return set()
 
 
 def block_scanners_ips():
     confirmation = input(
-        "Chức năng này sẽ tự động tải về danh sách các địa chỉ IP được đánh dấu là scanner như Censys, Shodan,... từ repo https://github.com/SilvrrGIT/IP-Lists/. Bạn muốn tiếp tục chứ? (y/n): "
+        "Chức năng này sẽ tự động tải về danh sách các địa chỉ IP được đánh dấu là scanner như Censys, Shodan,... từ repo https://github.com/stamparm/ipsum/. Bạn muốn tiếp tục chứ? (y/n): "
     )
 
     if confirmation.lower() not in ["y", "yes"]:
